@@ -1,139 +1,199 @@
-function computerChoice () {
-    let rand = Math.random();
-    let num = Math.round(rand*100);
-    if (num <= 34) {
-        return ("Rock")
-    }
-    else if (num <= 67) {
-        return ("Paper")
-    }
-    else {
-        return ("Scissors")
-    }
-}
+let playerSelection;
+let computerSelection;
 
-function playerChoice () {
-    let playerInput = (prompt("What will you throw?"));
-    if (playerInput.toLowerCase() == "rock") {
-        return "Rock";
-    } else if (playerInput.toLowerCase() == "paper") {
-        return "Paper";
-    } else if (playerInput.toLowerCase() == "scissors") {
-        return "Scissors";
-    } else {
-        alert("Choose Rock, Paper, or Scissors!");
-        return playerChoice();
-    }
-    
-}
-
-function playRound (playerSelection, computerSelection) {
-   
-    if (playerSelection == "Rock") {
-       
-        if (computerSelection == "Rock") {
-            ++gameCount;
-            alert("It's a tie!" + " The score is " + pScore + " - " + cScore + ".");
-            return "tie";
-
-        } else if (computerSelection == "Paper") {
-            ++gameCount;
-            ++cScore;
-            alert("You lose, paper covers rock!" + " The score is " + pScore + " - " + cScore + ".");
-            return "loss";
-
-        } else if (computerSelection == "Scissors") {
-            ++gameCount;
-            ++pScore;
-            alert("You win! Rock smashes scissors!" + " The score is " + pScore + " - " + cScore + ".");
-            return "win";
-        }
-    } else if (playerSelection == "Paper") {
-       
-        if (computerSelection == "Paper") {
-            ++gameCount;
-            alert("It's a tie!" + " The score is " + pScore + " - " + cScore + ".");
-            return "tie";
-
-        } else if (computerSelection == "Rock") {
-            ++gameCount;
-            ++pScore;
-            alert("You Win! Paper covers rock!" + " The score is " + pScore + " - " + cScore + ".");
-            return "win";
-
-        } else if (computerSelection == "Scissors") {
-            ++gameCount;
-            ++cScore;
-            alert("You lose, scissors cut paper!" + " The score is " + pScore + " - " + cScore + ".");
-            return "loss";
-
-        }
-    } else if (playerSelection == "Scissors") {
-        
-        if (computerSelection == "Scissors") {
-            ++gameCount;
-            alert("It's a tie!" + " The score is " + pScore + " - " + cScore + ".");
-            return "tie";
-
-        } else if (computerSelection == "Rock") {
-            ++gameCount;
-            ++cScore;
-            alert("You lose, rock smashes scissors!" + " The score is " + pScore + " - " + cScore + ".");
-            return "loss";
-
-        } else if (computerSelection == "Paper") {
-            ++gameCount;
-            ++pScore;
-            alert("You win! Scissors cut paper!" + " The score is " + pScore + " - " + cScore + ".");
-            return "win";
-
-        }
-}
-}
 let gameCount = 0;
 let pScore = 0;
 let cScore = 0;
 
-function game() {
-    let result = playRound(playerChoice(), computerChoice());
+const button = document.querySelectorAll('.button');
 
-    if (result == "tie") {  
-        if (gameCount >=5) {
-            return finalTally();
-        } else {
-            return game();
-        }
+const pRBtn = document.querySelector('#pRBtn');
+const pPBtn = document.querySelector('#pPBtn');
+const pSBtn = document.querySelector('#pSBtn');
 
-    } else if (result == "win") {
-        if (gameCount >=5) {
-            return finalTally();
-        } else {
-            return game();
+const cRBtn = document.querySelector('#cRBtn');
+const cPBtn = document.querySelector('#cPBtn');
+const cSBtn = document.querySelector('#cSBtn');
+
+const gameAlert = document.querySelector('#gameAlert');
+
+const pScoreBoard = document.querySelector('#pScoreBoard');
+const cScoreBoard = document.querySelector('#cScoreBoard');
+
+
+
+function computerChoice () {
+    let rand = Math.random();
+    let num = Math.round(rand*100);
+    if (num <= 34) {
+        cRBtn.classList.add('pressed');
+        return ("rock");
+    }
+    else if (num <= 67) {
+        cPBtn.classList.add('pressed');
+        return ("paper");
+    }
+    else {
+        cSBtn.classList.add('pressed');
+        return ("scissors");
+    }
+};
+
+function playRound () {
+
+    if (playerSelection == "rock") {
+       
+        if (computerSelection == "rock") {
+            ++gameCount;
+            return "It's a tie!";
+            
+
+        } else if (computerSelection == "paper") {
+            ++gameCount;
+            ++cScore;
+            return "You lose, paper covers rock!";
+            
+
+        } else if (computerSelection == "scissors") {
+            ++gameCount;
+            ++pScore;
+            return "You win! Rock smashes scissors!"
+            
         }
+    } else if (playerSelection == "paper") {
+       
+        if (computerSelection == "paper") {
+            ++gameCount;
+            return "It's a tie!" 
+
+
+        } else if (computerSelection == "rock") {
+            ++gameCount;
+            ++pScore;
+            return "You Win! Paper covers rock!" 
+
+
+        } else if (computerSelection == "scissors") {
+            ++gameCount;
+            ++cScore;
+            return "You lose, scissors cut paper!";
+            
+
+        }
+    } else if (playerSelection == "scissors") {
         
-    } else {
-        if (gameCount >=5) {
-            return finalTally();
-        } else {
-            return game();
+        if (computerSelection == "scissors") {
+            ++gameCount;
+            return "It's a tie!";
+
+
+        } else if (computerSelection == "rock") {
+            ++gameCount;
+            ++cScore;
+            return "You lose, rock smashes scissors!";
+
+
+        } else if (computerSelection == "paper") {
+            ++gameCount;
+            ++pScore;
+            return "You win! Scissors cut paper!";
+
+
         }
     }
 }
 
-function finalTally() {
-    if (pScore > cScore){
-        alert("You win: " + pScore + " - " + cScore + "!")
-        return ("You win: " + pScore + " - " + cScore + "!");
-    } else if (cScore > pScore) {
-        alert("You lose: " + pScore + " - " + cScore + "!")
-        return ("You lose: " + pScore + " - " + cScore + "!");
-    } else {
-        alert("You tied: " + pScore + " - " + cScore + "!")
-        return ("You tied: " + pScore + " - " + cScore + "!")
+
+function game() {
+
+    if (pScore >= 5) {
+        setTimeout (playerWin(), 1000);
+    
+    } else if (cScore >= 5) {
+        setTimeout(computerWin(), 1000);
+    
+    }else {
+       return playRound(playerSelection, computerSelection);
     }
+
 }
 
-const playerSelection = playerChoice();
-const computerSelection = computerChoice();
+function playerWin() {
 
-console.log(game(playRound(playerSelection, computerSelection)));
+    pScoreBoard.classList.add('winningScore');
+    gameAlert.textContent += " Congratulations! You won!"
+
+}
+
+function computerWin() {
+
+    cScoreBoard.classList.add('winningScore');
+    gameAlert.textContent += " Game over, you lost!"
+
+}
+
+
+function removeTransition() {
+
+    button.forEach(button => button.classList.remove('pressed'));
+
+}
+
+pRBtn.addEventListener('click', () => {
+
+    pRBtn.classList.add('pressed');
+    computerSelection = computerChoice();
+    playerSelection = 'rock';
+    gameAlert.textContent = (playRound(playerSelection, computerSelection));
+    pScoreBoard.textContent = pScore;
+    cScoreBoard.textContent = cScore;
+    setTimeout(removeTransition, 500);
+    if (pScore >= 5) {
+        playerWin();
+    } else if (cScore >= 5) {
+        computerWin();
+    }
+    
+
+});
+
+pPBtn.addEventListener('click', () => {
+
+    pPBtn.classList.add('pressed');
+    computerSelection = computerChoice();
+    playerSelection = 'paper';
+    gameAlert.textContent = (playRound(playerSelection, computerSelection));
+    pScoreBoard.textContent = pScore;
+    cScoreBoard.textContent = cScore;
+    setTimeout(removeTransition, 500);
+    if (pScore >= 5) {
+        playerWin();
+    } else if (cScore >= 5) {
+        computerWin();
+    }
+        
+    
+});
+
+pSBtn.addEventListener('click', () => {
+
+    pSBtn.classList.add('pressed');
+    computerSelection = computerChoice();
+    playerSelection = 'scissors';
+    gameAlert.textContent = (playRound(playerSelection, computerSelection));
+    pScoreBoard.textContent = pScore;
+    cScoreBoard.textContent = cScore;
+    setTimeout(removeTransition, 500);
+    if (pScore >= 5) {
+        playerWin();
+    } else if (cScore >= 5) {
+        computerWin();
+    }       
+        
+});
+
+
+    
+
+
+

@@ -4,11 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>R P S</title>
+    <link rel="stylesheet" href="style.css">
+    <script src='myScript.js' defer></script>
 </head>
 <body>
-    <script src="myScript.js"> </script>
-    <h1>Rock. Paper. Scissors. Best of 5</h1>
-    <h2>Refresh page to play again.</h2>
+    
+    <h1>Rock Paper Scissors</h1>
+    <div id = roundCount>
+
+    </div>
+    <div id = gameAlert>
+        Make your selection
+    </div>
+    <div id = buttonBox>
+        <div id = playerBox>
+            <p class = playerNames>Player</p>
+            <div id = playerButtons>
+                <button id = pRBtn class = button >R</button>
+                <button id = pPBtn class = button >P</button>
+                <button id = pSBtn class = button >S</button>
+            </div>
+            <p id = pScoreBoard>Score: 0</p>
+        </div>
+       
+        <div id = compBox>
+            <p class = playerNames>Computer</p>
+            <div id = compButtons>
+                <button id = cRBtn class = button >R</button>
+                <button id = cPBtn class = button >P</button>
+                <button id = cSBtn class = button >S</button>
+            </div>
+            <p id = cScoreBoard>Score: 0</p>
+        </div>
+    </div>
+    
+    
+    
 </body>
 </html>

@@ -1,0 +1,83 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: cadetblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 72px;
+    background-color: cadetblue;
+    color:cornsilk;
+    margin: 0;
+    padding: 24px;
+    text-shadow: 2px 2px salmon;
+}
+
+
+.playerNames {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 50px;
+    font-size: 24px;
+    font-weight: 700;
+    color: cadetblue;
+    
+}
+
+#buttonBox {
+    background-color: cornsilk;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 12px;
+}
+
+#playerBox, #compBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    width: 75px;
+    height: 75px;
+    margin: 5px;
+    font-size: 48px;
+    font-weight: 900;
+    font-style: italic;
+    background-color: cadetblue;
+    color: cornsilk;
+    border: none;
+    transition: all 0.1s ease;
+}
+
+.pressed {
+    background-color: salmon;
+    color: cadetblue;
+}
+
+#pScoreBoard, #cScoreBoard {
+    font-size: 24px;
+    color: cadetblue;
+    font-weight: 700;
+
+}
+
+#gameAlert {
+    padding: 24px 10% 12px 10%;
+    font-size: 48px;
+    color: salmon;
+    text-align:  center;
+    margin: 0;
+    background-color: cornsilk;
+    color: salmon;
+
+}
+
+#winningScore {
+    font-size: 36px;
+    color: salmon;
+    font-weight: 700;
+}
